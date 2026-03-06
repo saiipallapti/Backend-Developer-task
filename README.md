@@ -1,172 +1,213 @@
+Backend Developer (Intern) – Project Assignment
 
-# Backend Developer (Intern) – Project Assignment
+A full-stack application implementing secure authentication, role-based access control, and CRUD operations using React, Node.js, Express, and MongoDB Atlas.
 
-A full-stack project implementing **secure user authentication, role-based access, and CRUD operations** using React, Node.js, Express, and MongoDB Atlas. This project demonstrates a scalable backend system with a simple frontend UI for testing the APIs.  
+This project demonstrates the design of a secure, scalable REST API with a simple frontend UI for testing and interacting with backend services.
 
----
+🚀 Tech Stack
+Backend
 
-## 🚀 Assignment Overview
+Node.js
 
-- Build a **Scalable REST API** with authentication and role-based access  
-- Implement **CRUD APIs** for a secondary entity (Tasks)  
-- Create a **basic frontend UI** to demonstrate API functionality  
-- Ensure **security and scalability** best practices  
+Express.js
 
----
+MongoDB Atlas
 
-## ✅ Core Features
+JWT Authentication
 
-### **Backend (Primary Focus)**
+bcrypt for password hashing
 
-- User registration & login with **hashed passwords**  
-- **JWT authentication** with token expiration  
-- **Role-based access** (user vs admin)  
-- CRUD APIs for **Tasks** (secondary entity)  
-- API versioning, error handling, and validation  
-- Database schema using **MongoDB Atlas**  
+Frontend
 
-### **Frontend (Supportive)**
+React.js
 
-- React.js frontend with simple UI  
-- Register & login users  
-- Access **protected dashboard** (JWT required)  
-- Perform CRUD actions on Tasks  
-- Display backend **error/success messages**  
+Vite
 
-### **Security & Scalability**
+Axios
 
-- Secure JWT token handling  
-- Input sanitization & validation  
-- Scalable project structure for new modules  
-- Optional: caching (Redis), logging, Docker deployment  
+Tools
 
----
+Thunder Client / Postman
 
-## 📁 Project Structure
+Git & GitHub
 
-```text
-backend-intern-task/
-├── backend/
-│   ├── controllers/     # authController.js, taskController.js
-│   ├── middleware/      # auth.js (JWT & role checking)
-│   ├── models/          # User.js, Task.js
-│   ├── routes/          # auth.js, tasks.js
+Nodemon
+
+📌 Assignment Overview
+
+The goal of this assignment is to:
+
+Build a secure REST API
+
+Implement JWT authentication
+
+Implement role-based access control
+
+Build CRUD APIs
+
+Create a basic frontend UI to test APIs
+
+Follow security and scalability best practices
+
+✅ Core Features
+Backend (Primary Focus)
+
+User registration & login
+
+Password hashing using bcrypt
+
+JWT authentication with expiration
+
+Role-based access (User / Admin)
+
+CRUD APIs for Tasks
+
+API versioning
+
+Input validation & error handling
+
+MongoDB Atlas database integration
+
+🎨 Frontend (Supportive)
+
+Simple React UI that allows users to:
+
+Register account
+
+Login and receive JWT token
+
+Access protected dashboard
+
+Perform CRUD operations on tasks
+
+Display API success/error messages
+
+🔐 Security & Scalability
+
+Security practices implemented:
+
+Password hashing using bcrypt
+
+JWT authentication for protected routes
+
+Role-based access control
+
+Input validation
+
+Structured project architecture
+
+Scalability considerations:
+
+Modular backend architecture
+
+Easy addition of new modules
+
+Ready for microservices architecture
+
+Can integrate Redis caching
+
+Docker-ready deployment
+
+📁 Project Structure
+backend-intern-task
+│
+├── backend
+│   ├── controllers
+│   │   ├── authController.js
+│   │   └── taskController.js
+│   │
+│   ├── middleware
+│   │   └── auth.js
+│   │
+│   ├── models
+│   │   ├── User.js
+│   │   └── Task.js
+│   │
+│   ├── routes
+│   │   ├── auth.js
+│   │   └── tasks.js
+│   │
 │   ├── server.js
 │   └── package.json
-├── frontend/
-│   ├── src/
+│
+├── frontend
+│   ├── src
 │   ├── package.json
 │   └── vite.config.js
-├── README.md
-└── Postman_Collection.json
-````
-
----
-
-## ⚙️ How to Run Locally
-
-### **Backend**
-
-```bash
+│
+├── Postman_Collection.json
+└── README.md
+⚙️ Running the Project Locally
+1️⃣ Clone Repository
+git clone https://github.com/yourusername/backend-intern-task.git
+cd backend-intern-task
+Backend Setup
 cd backend
 npm install
 npx nodemon server.js
-```
 
-* Server runs on: `http://localhost:5000`
+Server runs on:
 
-### **Frontend**
-
-```bash
+http://localhost:5000
+Frontend Setup
 cd frontend
 npm install
 npm run dev
-```
 
-* Frontend runs on: `http://localhost:5179`
+Frontend runs on:
 
----
+http://localhost:5179
+🔑 Authentication Flow
 
-## 🔐 Authentication & Role-Based Access Flow
+1️⃣ User registers with email & password
+2️⃣ Password hashed using bcrypt
+3️⃣ User logs in and receives JWT token
+4️⃣ Token stored in localStorage
+5️⃣ Token sent in Authorization header for protected routes
 
-1. User registers with email and password
-2. Password is hashed using **bcrypt**
-3. User logs in, backend generates **JWT token**
-4. JWT stored in **localStorage** on frontend
-5. Dashboard and CRUD routes accessible only with valid JWT
-6. Role-based access ensures certain routes/actions are **admin-only**
-7. Logout clears token
+Example:
 
----
+Authorization: Bearer <token>
+💻 API Routes
+Authentication
+Method	Route	Description
+POST	/api/v1/auth/register	Register new user
+POST	/api/v1/auth/login	Login user
+Task Routes (Protected)
+Method	Route	Description
+GET	/api/v1/tasks	Get all tasks
+POST	/api/v1/tasks	Create task
+PUT	/api/v1/tasks/:id	Update task
+DELETE	/api/v1/tasks/:id	Delete task
+🧪 API Testing
 
-## 💻 API Routes
+All APIs tested using:
 
-### **Auth Routes**
+Thunder Client
 
-| Method | Route                 | Description       |
-| ------ | --------------------- | ----------------- |
-| POST   | /api/v1/auth/register | Register new user |
-| POST   | /api/v1/auth/login    | Login and get JWT |
+Postman
 
-### **Task Routes (Protected)**
+Collection file included:
 
-| Method | Route             | Description                      |
-| ------ | ----------------- | -------------------------------- |
-| GET    | /api/v1/tasks     | Get all tasks for logged-in user |
-| POST   | /api/v1/tasks     | Create a new task                |
-| PUT    | /api/v1/tasks/:id | Update a task by ID              |
-| DELETE | /api/v1/tasks/:id | Delete a task by ID              |
+Postman_Collection.json
+⚡ Scalability Notes
 
-> All Task routes require **JWT token in the Authorization header**:
-> `Authorization: Bearer <token>`
+This system can scale by:
 
----
+Splitting services into microservices
 
-## 📝 Frontend Integration
+Adding Redis caching
 
-* Login/Register pages call backend APIs using **Axios**
-* JWT token sent in **Authorization header** for protected routes
-* CRUD actions for Tasks are reflected in the UI
-* Backend **error/success messages** displayed to the user
+Implementing load balancing
 
----
+Using Docker containers
 
-## 🔒 Security Practices
+👨‍💻 Author
 
-* Passwords hashed using **bcrypt**
-* JWT authentication for all protected routes
-* Role-based access (`user` vs `admin`)
-* Input validation and proper error handling
+Saii Pallapati
 
----
+📧 Email
+saiiipallapati@gmail.com
 
-## ⚡ Scalability & Deployment Notes
-
-* Modular project structure allows easy addition of new modules
-* Can be scaled with **microservices architecture**
-* Optional **Redis caching** for improved performance
-* Ready for **Docker deployment** and load balancing
-
----
-
-## 🧰 API Documentation
-
-* Postman / Thunder Client collection included (`Postman_Collection.json`)
-* All APIs tested and functional
-
----
-
-## 👤 Author
-
-**Saii Pallapati**
-
-* Email: [saiiipallapati@gmail.com](mailto:saiiipallapati@gmail.com)
-* Phone: +91 7780238400
-
----
-
-
-```
-
----
-
+📱 Phone
++91 7780238400
